@@ -43,15 +43,15 @@ variable "frontend_ports" {
 
 variable "http_listeners" {
   type = map(object({
-    name               = string
-    frontend_port_name = string
-
-    firewall_policy_id   = optional(string)
-    require_sni          = optional(bool)
-    host_name            = optional(string)
-    host_names           = optional(list(string))
-    ssl_certificate_name = optional(string)
-    ssl_profile_name     = optional(string)
+    name                           = string
+    frontend_port_name             = string
+    frontend_ip_configuration_name = string
+    firewall_policy_id             = optional(string)
+    require_sni                    = optional(bool)
+    host_name                      = optional(string)
+    host_names                     = optional(list(string))
+    ssl_certificate_name           = optional(string)
+    ssl_profile_name               = optional(string)
     custom_error_configuration = optional(list(object({
       status_code           = string
       custom_error_page_url = string

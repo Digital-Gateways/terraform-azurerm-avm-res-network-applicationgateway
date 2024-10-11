@@ -118,7 +118,7 @@ resource "azurerm_application_gateway" "this" {
   dynamic "http_listener" {
     for_each = var.http_listeners
     content {
-      frontend_ip_configuration_name = var.frontend_ip_type != null && var.private_ip_address != null ? local.frontend_ip_private_name : local.frontend_ip_configuration_name
+      frontend_ip_configuration_name = lookup(http_listener.value, "frontend_ip_configuration_name", null)
       frontend_port_name             = lookup(http_listener.value, "frontend_port_name", null)
       name                           = http_listener.value.name
       protocol                       = http_listener.value.ssl_certificate_name == null ? "Http" : "Https"
