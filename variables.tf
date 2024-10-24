@@ -413,3 +413,12 @@ variable "zones" {
   default     = ["1", "2", "3"] #["1", "2", "3"]
   description = "The Azure application gateway zone redundancy"
 }
+
+variable "trusted_root_certificate" {
+  type = object({
+    name = string
+    data = string
+  })
+  default     = null
+  description = "Trusted root certificate."
+}

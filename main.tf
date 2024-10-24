@@ -46,6 +46,12 @@ resource "azurerm_application_gateway" "this" {
   tags  = var.tags
   zones = var.zones
 
+  #----------SSL configuration for the application gateway-----------
+  trusted_root_certificate {
+    name = lookup(var.trusted_root_certificate, "name", "null")
+    data = lookup(var.trusted_root_certificate, "data", "null")
+  }
+
   #----------Backend Address Pool Configuration for the application gateway -----------
   dynamic "backend_address_pool" {
     for_each = var.backend_address_pools
